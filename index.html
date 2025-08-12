@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 번호 생성기</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>로또 번호 생성기</h1>
+        <div class="lotto-machine">
+            <div id="numbers-display" class="numbers-display"></div>
+        </div>
+        <button id="draw-button">번호 생성</button>
+        <!-- Animated Popup Structure - Moved inside container -->
+        <div id="animated-popup" class="popup-container">
+            <div class="popup-content">
+                <p id="popup-message"></p>
+                <button id="popup-close-button">닫기</button>
+            </div>
+        </div>
+
+        <!-- Input Modal Structure -->
+        <div id="input-modal" class="modal-overlay">
+            <div class="modal-content">
+                <p>얼마의 금액을 투자하시나요? (1줄 = 1,000원)</p>
+                <input type="text" id="investment-amount" placeholder="금액을 입력하세요 (예: 5,000)" min="1000" step="1000">
+                <button id="confirm-investment">확인</button>
+                <button id="cancel-investment">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

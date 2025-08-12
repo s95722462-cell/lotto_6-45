@@ -1,0 +1,287 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 450px; /* Ensure enough space for numbers */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.numbers-display { /* Modified: Removed .bonus-display */
+    display: flex;
+    flex-direction: row; /* Explicitly set direction */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.lotto-machine {
+    background-color: #ffe0e6; /* Light pink for lotto paper effect */
+    padding: 1rem; /* Add some padding for better visual */
+    border-radius: 10px; /* Slightly rounded corners */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.ball {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    box-shadow: inset -5px -5px 10px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: scale(0);
+    animation: pop-in 0.5s forwards;
+}
+
+@keyframes pop-in {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.color-1 { background: #fbc400; } /* 1-10 */
+.color-2 { background: #69c8f2; } /* 11-20 */
+.color-3 { background: #ff7272; } /* 21-30 */
+.color-4 { background: #aaa; }    /* 31-40 */
+.color-5 { background: #b0d840; } /* 41-45 */
+
+/* Removed .bonus-display rule */
+/* Removed .bonus-label rule */
+
+#draw-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#draw-button:hover {
+    background-color: #45a049;
+}
+
+#draw-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    .ball {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Animated Popup Styles */
+.popup-container {
+    margin-top: 20px; /* Space below the button */
+    display: none; /* Hidden by default */
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.popup-container.show {
+    display: block; /* Show when 'show' class is added */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.popup-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+}
+
+.popup-content p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#popup-close-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+#popup-close-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design for Popup */
+@media (max-width: 600px) {
+    .popup-content {
+        padding: 20px;
+        margin: 10px;
+    }
+    .popup-content p {
+        font-size: 1.4rem;
+    }
+}
+
+/* Multi-line Lotto Display Styles */
+.lotto-line-container {
+    display: flex;
+    flex-direction: column; /* Stack label and numbers vertically */
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #ffe0e6; /* Changed to pink */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.line-label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.line-numbers-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+/* Removed .line-bonus-display rule */
+
+/* Input Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001; /* Higher than popup-overlay */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-content p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.modal-content input[type="text"] { /* Changed from type="number" */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 80%;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.modal-content button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+    background-color: #218838;
+}
+
+#cancel-investment {
+    background-color: #dc3545;
+}
+
+#cancel-investment:hover {
+    background-color: #c82333;
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        padding: 20px;
+        margin: 10px;
+    }
+    .modal-content p {
+        font-size: 1rem;
+    }
+    .modal-content input[type="text"] { /* Changed from type="number" */
+        width: 90%;
+    }
+}
