@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listeners for input modal buttons
     confirmInvestmentButton.addEventListener('click', () => {
         const amount = parseInt(investmentAmountInput.value.replace(/,/g, '')); // Remove commas before parsing
-        if (isNaN(amount) || amount <= 0 || amount % 1000 !== 0) {
-            alert('유효한 금액을 입력해주세요. (1000원 단위)');
+        if (isNaN(amount) || amount <= 0 || amount % 1000 !== 0 || amount > 5000) {
+            alert('유효한 금액을 입력해주세요. (1,000원 단위, 최대 5,000원)');
             return;
         }
         const numberOfLines = amount / 1000;

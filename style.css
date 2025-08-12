@@ -285,3 +285,12 @@ h1 {
         width: 90%;
     }
 }
+
+.footer-credit {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #888;
+}
