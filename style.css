@@ -20,6 +20,16 @@ body {
 h1 {
     color: #333;
     margin-bottom: 2rem;
+    display: flex; /* Make h1 a flex container */
+    align-items: baseline; /* Align text and credit */
+    justify-content: center; /* Center the whole h1 content */
+    gap: 10px; /* Space between title and credit */
+}
+
+.credit-inline {
+    font-size: 0.2em; /* 1/3 of h1's effective font size */
+    color: #888; /* Gray color */
+    white-space: nowrap; /* Prevent wrapping */
 }
 
 .numbers-display { /* Modified: Removed .bonus-display */
